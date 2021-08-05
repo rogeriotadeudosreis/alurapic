@@ -7,11 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  photos: Object[] = [];
+  photos: any[] = [];
 
   constructor(private photoService: PhotoService) {
     this.photoService
       .listFromUser('flavio')
-      .subscribe((photos) => (this.photos = photos));
+      .subscribe((photos) => {
+        (this.photos = photos)
+      });
   }
 }
