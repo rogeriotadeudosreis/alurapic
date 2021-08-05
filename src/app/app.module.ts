@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PhotosModule } from './photos/photos.module';
+import { HttpClientModule } from '@angular/common/http';
 
+import { PhotosModule } from './photos/photos.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { PhotosModule } from './photos/photos.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PhotosModule
+    PhotosModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
