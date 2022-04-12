@@ -1,0 +1,51 @@
+<div
+  class="container"
+  style="margin-top: 20px; background-color: aquamarine; width: 30%; padding: 50px;"
+>
+  <h4 class="text-center">Login</h4>
+
+  <form [formGroup]="loginForm" class="form mt-4">
+    <div class="form-group">
+      <input
+        formControlName="userName"
+        class="form-control"
+        type="text"
+        placeholder="user name"
+        autofocus
+      >
+      <small *ngIf="loginForm.get('userName').errors?.required && 
+      loginForm.get('userName').touched"
+       class="text-danger d-block mt-2">
+        Este campo é obrigatório
+      </small>
+      <small *ngIf="loginForm.get('userName')?.errors &&
+      loginForm.get('userName').touched"
+       class="text-danger d-block mt-2">
+        O username deve ter no mínimo 3 caracteres
+      </small>
+    </div>
+
+    <div class="form-group">
+      <input
+        formControlName="password"
+        class="form-control"
+        type="password"
+        placeholder="password"
+      >
+      <small *ngIf="loginForm.get('password').errors?.required &&
+      loginForm.get('password').touched"
+       class="text-danger d-block mt-2">
+        Este campo é obrigatório
+      </small>
+      <small *ngIf="loginForm.get('password')?.errors &&
+      loginForm.get('password').touched"
+       class="text-danger d-block mt-2">
+        A senha deve ter no mínimo 06 caracteres
+      </small>
+    </div>
+
+    <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary btn-block">login</button>
+  </form>
+
+  <p class="text-center">Not a user?<a>Register now</a></p>
+</div>
