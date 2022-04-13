@@ -1,28 +1,29 @@
 <div
   class="container"
-  style="margin-top: 20px; background-color: aquamarine; width: 30%; padding: 50px;"
+  style="
+    margin-top: 20px;
+    background-color: aquamarine;
+    width: 30%;
+    padding: 50px;
+  "
 >
   <h4 class="text-center">Login</h4>
 
-  <form [formGroup]="loginForm" class="form mt-4">
+  <form [formGroup]="loginForm" class="form mt-4" (submit)="login()">
     <div class="form-group">
-      <input
+      <input #userNameInput
         formControlName="userName"
         class="form-control"
         type="text"
         placeholder="user name"
         autofocus
+      />
+      <ap-vmessage
+        *ngIf="loginForm.get('userName').errors?.required && 
+        loginForm.get('userName').touched"
+        text="Este campo é obrigatório"
       >
-      <small *ngIf="loginForm.get('userName').errors?.required && 
-      loginForm.get('userName').touched"
-       class="text-danger d-block mt-2">
-        Este campo é obrigatório
-      </small>
-      <small *ngIf="loginForm.get('userName')?.errors &&
-      loginForm.get('userName').touched"
-       class="text-danger d-block mt-2">
-        O username deve ter no mínimo 3 caracteres
-      </small>
+      </ap-vmessage>
     </div>
 
     <div class="form-group">
@@ -31,20 +32,22 @@
         class="form-control"
         type="password"
         placeholder="password"
+      />
+      <ap-vmessage
+        *ngIf="loginForm.get('password').errors?.required && 
+        loginForm.get('password').touched"
+        text="A senha é obrigatório"
       >
-      <small *ngIf="loginForm.get('password').errors?.required &&
-      loginForm.get('password').touched"
-       class="text-danger d-block mt-2">
-        Este campo é obrigatório
-      </small>
-      <small *ngIf="loginForm.get('password')?.errors &&
-      loginForm.get('password').touched"
-       class="text-danger d-block mt-2">
-        A senha deve ter no mínimo 06 caracteres
-      </small>
+      </ap-vmessage>
     </div>
 
-    <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary btn-block">login</button>
+    <button
+      [disabled]="loginForm.invalid"
+      type="submit"
+      class="btn btn-primary btn-block"
+    >
+      login
+    </button>
   </form>
 
   <p class="text-center">Not a user?<a>Register now</a></p>
