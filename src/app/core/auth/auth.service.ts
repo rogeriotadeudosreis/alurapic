@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { UserService } from '../user/user.service';
-import { TokenService } from './../token/token.service';
 
 const API_URL = 'http://localhost:3000';
 
