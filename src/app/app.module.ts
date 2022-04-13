@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import { PhotosModule } from './photos/photos.module';
 import { ErrorsModule } from './errors/errors.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { ErrorsModule } from './errors/errors.module';
     PhotosModule,
     ErrorsModule,
     HomeModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent],
