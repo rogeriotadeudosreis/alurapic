@@ -1,5 +1,5 @@
-import { AuthService } from './../../core/auth.service';
-import { Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import { AuthService } from '../../core/auth/auth.service';
+import { Component, ElementRef, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class SignInComponent implements OnInit {
   loginForm: FormGroup;
-  @ViewChild('userNameInput', {static: false}) userNameInput: ElementRef<HTMLInputElement>;
+  // @ViewChild('userNameInput', {static: false}) userNameInput: ElementRef<HTMLInputElement>;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,7 +31,7 @@ export class SignInComponent implements OnInit {
       (err) => {
         console.log(err);
         this.loginForm.reset();
-        this.userNameInput.nativeElement.focus();
+        // this.userNameInput.nativeElement.focus();
         alert('Erro na autenticação');
       }
     );
