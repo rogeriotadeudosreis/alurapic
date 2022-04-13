@@ -2,6 +2,7 @@ import { AuthService } from '../../core/auth/auth.service';
 import { Component, ElementRef, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PlataformDetectorService } from 'src/app/core/plataform-detector/plataform-detectror.service';
 
 @Component({
   templateUrl: './signin.component.html',
@@ -13,7 +14,8 @@ export class SignInComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private platformDetectorService: PlataformDetectorService
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +33,7 @@ export class SignInComponent implements OnInit {
       (err) => {
         console.log(err);
         this.loginForm.reset();
+        this.platformDetectorService.isPlatformBrowser() &&
         // this.userNameInput.nativeElement.focus();
         alert('Erro na autenticação');
       }
