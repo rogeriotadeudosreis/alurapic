@@ -12,16 +12,14 @@ export class PhotoListComponent implements OnInit {
   photos: Photo[] = [];
   filter: string = '';
 
-  constructor(
-    private photoService: PhotoService,
-    private activateRoute: ActivatedRoute
-  ) {}
+  constructor(private activateRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const userName = this.activateRoute.snapshot.params.userName;
-    this.photoService.listFromUser(userName).subscribe((photos) => {
-      this.photos = photos;
-    });
-    console.log(this.filter);
+    this.photos = this.activateRoute.snapshot.data['photos'];
+    // const userName = this.activateRoute.snapshot.params.userName;
+    // this.photoService.listFromUser(userName).subscribe((photos) => {
+    //   this.photos = photos;
+    // });
+    // console.log(this.filter);
   }
 }

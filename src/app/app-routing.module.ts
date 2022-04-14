@@ -1,3 +1,4 @@
+import { PhotoListResolver } from './photos/photo-list/photo-list-resolver';
 import { SignInComponent } from './home/signin/signin.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { PhotoFormComponent } from './photos/photo-form/photo-form/photo-form.component';
@@ -7,7 +8,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { PhotoListComponent } from './photos/photo-list/photo-list.component';
 const routes: Routes = [
   { path: '', component: SignInComponent },
-  { path: 'user/flavio', component: PhotoListComponent },
+  { path: 'user/:userName',
+    component: PhotoListComponent,
+    resolve: {
+      photos: PhotoListResolver,
+    },
+  },
   { path: 'p/add', component: PhotoFormComponent },
   { path: '**', component: NotFoundComponent },
 ];
