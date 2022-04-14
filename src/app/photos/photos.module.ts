@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { PhotoFormComponent } from '../photos/photo-form/photo-form/photo-form.component';
 import { PhotosComponent } from '../photos/photo-list/photos/photos.component';
+import { CardModule } from './../shared/components/card/card.module';
 import { FilterByDescription } from './photo-list/filter-by-description.pipe';
 import { LoadButtonComponent } from './photo-list/load-button/load-button.component';
 import { PhotoListComponent } from './photo-list/photo-list.component';
@@ -15,8 +16,8 @@ import { PhotoComponent } from './photo/photo.component';
     PhotoFormComponent,
     PhotosComponent,
     FilterByDescription,
-    LoadButtonComponent 
+    LoadButtonComponent,
   ],
-  imports: [HttpClientModule, CommonModule],
+  imports: [HttpClientModule, CommonModule, CardModule],
 })
 export class PhotosModule {}
