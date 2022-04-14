@@ -18,7 +18,7 @@ import { PhotoComponent } from './photo/photo.component';
     PhotosComponent,
     FilterByDescription,
     LoadButtonComponent,
-    SearchComponent
+    SearchComponent,
   ],
   imports: [HttpClientModule, CommonModule, CardModule],
 })
