@@ -1,0 +1,86 @@
+<div
+  class="container"
+  style="
+    margin-top: 20px;
+    background-color: aquamarine;
+    width: 30%;
+    padding: 50px;
+  "
+>
+<h4 class="text-center">Register to embrace a new world!</h4>
+
+  <form class="form mt-4" [formGroup]="formSignUp" (submit)="register()">
+    <div class="form-group">
+      <input formControlName="email" type="text" class="form-control" placeholder="email" autofocus required/>
+      <ap-vmessage
+        *ngIf="formSignUp.get('email').errors?.required && 
+        formSignUp.get('email').touched"
+        text="Favor informar o email">
+      </ap-vmessage>
+      <ap-vmessage
+        *ngIf="formSignUp.get('email').errors?.email"
+        text="Email inválido">
+      </ap-vmessage>
+    </div>
+
+    <div class="form-group">
+      <input formControlName="fullName" type="text" class="form-control" placeholder="full name" required/>
+      <ap-vmessage
+        *ngIf="formSignUp.get('fullName').errors?.required && 
+        formSignUp.get('fullName').touched"
+        text="Favor informar o nome completo">
+      </ap-vmessage>
+      <ap-vmessage
+        *ngIf="formSignUp.get('fullName').errors?.minlength"
+        text="O nome deve ter no mínimo 03 caracteres">
+      </ap-vmessage>
+      <ap-vmessage
+        *ngIf="formSignUp.get('fullName').errors?.maxlength"
+        text="O nome deve ter no máximo 100 caracteres">
+      </ap-vmessage>
+    </div>
+
+    <div class="form-group">
+      <input formControlName="userName" type="text" class="form-control" placeholder="user name" required/>
+      <ap-vmessage
+        *ngIf="formSignUp.get('userName').errors?.required && 
+        formSignUp.get('userName').touched"
+        text="Favor informar o nome completo">
+      </ap-vmessage>
+      <ap-vmessage
+        *ngIf="formSignUp.get('userName').errors?.minlength"
+        text="O nome deve ter no mínimo 03 caracteres">
+      </ap-vmessage>
+      <ap-vmessage
+        *ngIf="formSignUp.get('userName').errors?.maxlength"
+        text="O nome deve ter no máximo 40 caracteres">
+      </ap-vmessage>
+      <ap-vmessage
+        *ngIf="formSignUp.get('userName').errors?.pattern"
+        text="O nome deve começar com letras minúsculas">
+      </ap-vmessage>
+
+    </div>
+
+    <div class="form-group">
+      <input formControlName="password" type="password" class="form-control" placeholder="password" required/>
+      <ap-vmessage
+        *ngIf="formSignUp.get('password').errors?.required && 
+        formSignUp.get('password').touched"
+        text="Favor informar uma senha">
+      </ap-vmessage>
+      <ap-vmessage
+        *ngIf="formSignUp.get('password').errors?.minlength"
+        text="A senha deve conter no mínimo 06 dígitos">
+      </ap-vmessage>
+      <ap-vmessage
+        *ngIf="formSignUp.get('password').errors?.maxlength"
+        text="A senha deve conter no máximo 12 dígitos">
+      </ap-vmessage>
+    </div>
+
+    <button class="btn btn-primary btn-block">Register</button>
+
+    <p class="text-center">Alredy a user?<a [routerLink]="['']">Sign in</a></p>
+  </form>
+</div>
