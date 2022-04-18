@@ -8,6 +8,7 @@ import {
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+// Curso finalizado com este arquivo
 @Injectable()
 export class RequestInterceptor implements HttpInterceptor {
   constructor(private tokenService: TokenService) {}
