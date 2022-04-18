@@ -56,7 +56,7 @@
         text="O nome deve ter no máximo 40 caracteres">
       </ap-vmessage>
       <ap-vmessage
-        *ngIf="formSignUp.get('userName').errors?.pattern"
+        *ngIf="formSignUp.get('userName').errors?.lowerCase"
         text="O nome deve começar com letras minúsculas">
       </ap-vmessage>
 
