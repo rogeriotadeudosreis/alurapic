@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LowerCaseValidator } from 'src/app/shared/validators/lower-case.validator';
+import { UserNotTakenValidatorService } from './user-not-taken.validator.service';
 
 @Component({
   templateUrl: './signup.component.html',
 })
 export class SignUpComponent implements OnInit {
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private useNotTakenValidatorService: UserNotTakenValidatorService
+  ) {}
 
   ngOnInit(): void {
     this.createFormBuilder();
@@ -33,6 +37,7 @@ export class SignUpComponent implements OnInit {
           Validators.minLength(3),
           Validators.maxLength(40),
         ],
+        [this.useNotTakenValidatorService.checkUserNameTaken()],
       ],
       password: [
         '',

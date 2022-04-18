@@ -59,6 +59,11 @@
         *ngIf="formSignUp.get('userName').errors?.lowerCase"
         text="O nome deve começar com letras minúsculas">
       </ap-vmessage>
+      <ap-vmessage 
+      text="Usuário já existe"
+      *ngIf="formSignUp.get('userName').errors?.userNameTaken">      
+      </ap-vmessage>
+      <small *ngIf="formSignUp.get('userName').valid" class="text-success">Usuário válido</small>
 
     </div>
 
@@ -79,7 +84,7 @@
       </ap-vmessage>
     </div>
 
-    <button class="btn btn-primary btn-block">Register</button>
+    <button [disabled]="formSignUp.invalid || formSignUp.pending" class="btn btn-primary btn-block">Register</button>
 
     <p class="text-center">Alredy a user?<a [routerLink]="['']">Sign in</a></p>
   </form>
